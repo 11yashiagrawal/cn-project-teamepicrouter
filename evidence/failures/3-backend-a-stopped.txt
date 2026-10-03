@@ -1,0 +1,10 @@
+# Failure 3 - Mac 2 - 2026-10-03 19:11:18
+
+$ 6 x /usr/bin/curl -s -D - -o /dev/null https://app.teamepicrouter.test/api/status
+HTTP/2 200  x-backend: B
+HTTP/2 200  x-backend: B
+HTTP/2 200  x-backend: B
+HTTP/2 200  x-backend: B
+HTTP/2 200  x-backend: B
+HTTP/2 200  x-backend: B
+

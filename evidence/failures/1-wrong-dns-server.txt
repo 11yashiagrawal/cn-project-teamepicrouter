@@ -1,0 +1,40 @@
+# Failure 1 - Mac 2 - 2026-10-03 18:54:13
+
+$ networksetup -getdnsservers Wi-Fi
+1.1.1.1
+
+$ dig app.teamepicrouter.test
+
+; <<>> DiG 9.10.6 <<>> app.teamepicrouter.test
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 58295
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.teamepicrouter.test.	IN	A
+
+;; AUTHORITY SECTION:
+.			86400	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2026100300 1800 900 604800 86400
+
+;; Query time: 12 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1)
+;; WHEN: Sat Oct 03 18:54:13 IST 2026
+;; MSG SIZE  rcvd: 127
+
+
+$ /usr/bin/curl -sS https://app.teamepicrouter.test/api/status
+curl: (6) Could not resolve host: app.teamepicrouter.test
+
+$ ping -c 3 10.7.5.47
+PING 10.7.5.47 (10.7.5.47): 56 data bytes
+64 bytes from 10.7.5.47: icmp_seq=0 ttl=64 time=109.232 ms
+64 bytes from 10.7.5.47: icmp_seq=1 ttl=64 time=6.197 ms
+64 bytes from 10.7.5.47: icmp_seq=2 ttl=64 time=52.693 ms
+
+--- 10.7.5.47 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 6.197/56.041/109.232/42.130 ms
+

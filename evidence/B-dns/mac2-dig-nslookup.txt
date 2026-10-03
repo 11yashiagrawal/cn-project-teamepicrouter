@@ -1,0 +1,51 @@
+# Mac 2 (Yashi) - 2026-10-03 18:36:00
+
+$ sudo networksetup -setdnsservers Wi-Fi 10.7.5.47
+
+$ networksetup -getdnsservers Wi-Fi
+10.7.5.47
+
+$ sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+$ scutil --dns | grep nameserver | head -2
+  nameserver[0] : 10.7.5.47
+  nameserver[0] : 10.7.5.47
+
+$ dig app.teamepicrouter.test
+
+; <<>> DiG 9.10.6 <<>> app.teamepicrouter.test
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31191
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.teamepicrouter.test.	IN	A
+
+;; ANSWER SECTION:
+app.teamepicrouter.test. 30	IN	A	10.7.5.47
+
+;; Query time: 16 msec
+;; SERVER: 10.7.5.47#53(10.7.5.47)
+;; WHEN: Sat Oct 03 18:36:05 IST 2026
+;; MSG SIZE  rcvd: 68
+
+
+$ nslookup app.teamepicrouter.test
+Server:		10.7.5.47
+Address:	10.7.5.47#53
+
+Name:	app.teamepicrouter.test
+Address: 10.7.5.47
+
+
+$ dig google.com +short
+142.250.29.138
+142.250.29.101
+142.250.29.139
+142.250.29.113
+142.250.29.102
+142.250.29.100
+

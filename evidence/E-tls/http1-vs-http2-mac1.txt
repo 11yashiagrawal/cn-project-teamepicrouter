@@ -1,0 +1,25 @@
+# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:17:57
+
+$ /usr/bin/curl --http1.1 -sI https://app.teamepicrouter.test/
+HTTP/1.1 200 OK
+Server: nginx/1.31.6
+Date: Sat, 03 Oct 2026 13:47:57 GMT
+Content-Type: application/json
+Content-Length: 63
+Connection: keep-alive
+X-Backend: B
+Cache-Control: public, max-age=60
+ETag: "917dfeb582d632d8"
+
+
+$ /usr/bin/curl -sI https://app.teamepicrouter.test/
+HTTP/2 200 
+server: nginx/1.31.6
+date: Sat, 03 Oct 2026 13:47:57 GMT
+content-type: application/json
+content-length: 63
+x-backend: A
+cache-control: public, max-age=60
+etag: "917dfeb582d632d8"
+
+

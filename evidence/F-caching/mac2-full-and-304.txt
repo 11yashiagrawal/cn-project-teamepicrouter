@@ -1,0 +1,31 @@
+# Mac 2 (Yashi) - 2026-10-03 18:39:38
+
+$ /usr/bin/curl -sI https://app.teamepicrouter.test/
+HTTP/2 200 
+server: nginx/1.31.6
+date: Sat, 03 Oct 2026 13:09:37 GMT
+content-type: application/json
+content-length: 63
+x-backend: A
+cache-control: public, max-age=60
+etag: "917dfeb582d632d8"
+
+
+$ /usr/bin/curl -sI -H 'If-None-Match: "917dfeb582d632d8"' https://app.teamepicrouter.test/
+HTTP/2 304 
+server: nginx/1.31.6
+date: Sat, 03 Oct 2026 13:09:37 GMT
+x-backend: B
+cache-control: public, max-age=60
+etag: "917dfeb582d632d8"
+
+
+$ /usr/bin/curl -sI -H 'If-None-Match: "917dfeb582d632d8"' https://app.teamepicrouter.test/
+HTTP/2 304 
+server: nginx/1.31.6
+date: Sat, 03 Oct 2026 13:09:37 GMT
+x-backend: A
+cache-control: public, max-age=60
+etag: "917dfeb582d632d8"
+
+

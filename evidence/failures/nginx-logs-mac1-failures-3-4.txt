@@ -1,0 +1,27 @@
+# Mac 1 (Abhijeet) - nginx's own view of failures 3 and 4
+
+$ grep -E '2026/10/03 19:1[12]' /opt/homebrew/var/log/nginx/error.log
+2026/10/03 19:11:17 [error] 12288#0: *136 kevent() reported that connect() failed (61: Connection refused) while connecting to upstream, client: 10.7.2.167, server: app.teamepicrouter.test, request: "GET /api/status HTTP/2.0", upstream: "http://10.7.2.167:3001/api/status", host: "app.teamepicrouter.test"
+2026/10/03 19:12:16 [error] 12288#0: *159 kevent() reported that connect() failed (61: Connection refused) while connecting to upstream, client: 10.7.2.167, server: app.teamepicrouter.test, request: "GET /api/status HTTP/2.0", upstream: "http://10.7.2.167:3001/api/status", host: "app.teamepicrouter.test"
+2026/10/03 19:12:16 [error] 12288#0: *159 kevent() reported that connect() failed (61: Connection refused) while connecting to upstream, client: 10.7.2.167, server: app.teamepicrouter.test, request: "GET /api/status HTTP/2.0", upstream: "http://10.7.2.167:3002/api/status", host: "app.teamepicrouter.test"
+
+$ grep -E '03/Oct/2026:19:1[12]' /opt/homebrew/var/log/nginx/access.log   (client, time, request, status)
+10.7.2.167 [03/Oct/2026:19:11:17 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:17 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:18 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:18 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:18 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:18 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:59 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:59 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:59 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:59 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:59 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:11:59 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:12:16 "GET /api/status 502
+10.7.2.167 [03/Oct/2026:19:12:41 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:12:41 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:12:42 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:12:42 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:12:42 "GET /api/status 200
+10.7.2.167 [03/Oct/2026:19:12:42 "GET /api/status 200

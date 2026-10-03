@@ -1,0 +1,64 @@
+# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:17:56
+
+$ cat /etc/resolver/teamepicrouter.test
+nameserver 127.0.0.1
+
+$ dig @127.0.0.1 app.teamepicrouter.test
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 app.teamepicrouter.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 12673
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.teamepicrouter.test.	IN	A
+
+;; ANSWER SECTION:
+app.teamepicrouter.test. 30	IN	A	10.7.5.47
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Sat Oct 03 19:17:56 IST 2026
+;; MSG SIZE  rcvd: 68
+
+
+$ dig @10.7.5.47 api.teamepicrouter.test
+
+; <<>> DiG 9.10.6 <<>> @10.7.5.47 api.teamepicrouter.test
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51435
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;api.teamepicrouter.test.	IN	A
+
+;; ANSWER SECTION:
+api.teamepicrouter.test. 30	IN	A	10.7.5.47
+
+;; Query time: 3 msec
+;; SERVER: 10.7.5.47#53(10.7.5.47)
+;; WHEN: Sat Oct 03 19:17:56 IST 2026
+;; MSG SIZE  rcvd: 68
+
+
+$ dscacheutil -q host -a name app.teamepicrouter.test
+name: app.teamepicrouter.test
+ip_address: 10.7.5.47
+
+
+$ dig @127.0.0.1 google.com +short
+192.178.158.101
+192.178.158.139
+192.178.158.138
+192.178.158.100
+192.178.158.102
+192.178.158.113
+

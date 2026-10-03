@@ -1,0 +1,50 @@
+# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:17:57
+
+## DNS query Mac 2 -> Mac 1 (UDP 53)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'dns.flags.response == 0 && dns.qry.name == "app.teamepicrouter.test"' -T fields -e frame.number -e ip.src -e udp.srcport -e ip.dst -e udp.dstport -e dns.qry.name
+1 10.7.2.167 54766 10.7.5.47 53 app.teamepicrouter.test
+
+## DNS response containing Mac 1 IP
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'dns.flags.response == 1 && dns.a == 10.7.5.47' -T fields -e frame.number -e ip.src -e udp.srcport -e ip.dst -e udp.dstport -e dns.a -e dns.resp.ttl
+2 10.7.5.47 53 10.7.2.167 54766 10.7.5.47 30
+
+## TCP SYN (client ephemeral port -> 443)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tcp.dstport == 443 && tcp.flags.syn == 1 && tcp.flags.ack == 0' -T fields -e frame.number -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -e tcp.seq
+3 10.7.2.167 53100 10.7.5.47 443 0
+
+## TCP SYN-ACK (443 -> client)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tcp.srcport == 443 && tcp.flags.syn == 1 && tcp.flags.ack == 1' -T fields -e frame.number -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -e tcp.seq -e tcp.ack
+4 10.7.5.47 443 10.7.2.167 53100 0 1
+
+## TCP ACK (completes handshake)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tcp.dstport == 443 && tcp.flags.syn == 0 && tcp.flags.ack == 1 && tcp.seq == 1 && tcp.ack == 1 && tcp.len == 0' -T fields -e frame.number -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -e tcp.seq -e tcp.ack
+5 10.7.2.167 53100 10.7.5.47 443 1 1
+
+## TLS ClientHello with SNI (type 1)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tls.handshake.type == 1' -T fields -e frame.number -e tcp.srcport -e tcp.dstport -e tls.handshake.extensions_server_name
+6 53100 443 app.teamepicrouter.test
+
+## TLS ServerHello (type 2)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tls.handshake.type == 2' -T fields -e frame.number -e tcp.srcport -e tcp.dstport -e tls.handshake.version
+8 443 53100 0x0303
+
+## TLS Certificate (type 11)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tls.handshake.type == 11' -T fields -e frame.number -e tcp.srcport -e tcp.dstport -e x509sat.uTF8String
+8 443 53100 app.teamepicrouter.test,teamepicrouter\ CN\ Project,app.teamepicrouter.test,teamepicrouter\ CN\ Project
+
+## TLS ChangeCipherSpec (content type 20)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tls.record.content_type == 20' -T fields -e frame.number -e ip.src -e tcp.srcport -e tcp.dstport
+10 10.7.2.167 53100 443
+
+## TLS Application Data, encrypted (content type 23)
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'tls.record.content_type == 23' -T fields -e frame.number -e ip.src -e tcp.srcport -e tcp.dstport -e tls.record.length
+14 10.7.2.167 53100 443 112
+
+## nginx -> backend: readable plain HTTP request on 3001/3002
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'http.request && (tcp.dstport == 3001 || tcp.dstport == 3002)' -T fields -e frame.number -e ip.src -e ip.dst -e tcp.dstport -e http.request.method -e http.request.uri -e http.host -e http.x_forwarded_for
+19 10.7.5.47 10.7.2.167 3002 GET /api/status app.teamepicrouter.test 10.7.2.167
+
+## backend -> nginx: readable plain HTTP response
+$ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'http.response && (tcp.srcport == 3001 || tcp.srcport == 3002)' -T fields -e frame.number -e ip.src -e tcp.srcport -e ip.dst -e http.response.code -e http.response.line
+22 10.7.2.167 3002 10.7.5.47 200 Server:\ BaseHTTP/0.6\ Python/3.14.7\r\n,Date:\ Sat,\ 03\ Oct\ 2026\ 13:09:51\ GMT\r\n,X-Backend:\ B\r\n,Cache-Control:\ no-store\r\n,Content-Type:\ application/json\r\n,Content-Length:\ 33\r\n
+
