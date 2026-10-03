@@ -1,4 +1,4 @@
-# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:17:57
+# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:44:52
 
 ## DNS query Mac 2 -> Mac 1 (UDP 53)
 $ tshark -r evidence/G-wireshark/G-full-request.pcap -Y 'dns.flags.response == 0 && dns.qry.name == "app.teamepicrouter.test"' -T fields -e frame.number -e ip.src -e udp.srcport -e ip.dst -e udp.dstport -e dns.qry.name

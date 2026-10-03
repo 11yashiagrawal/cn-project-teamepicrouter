@@ -127,3 +127,39 @@ Oct  3 19:17:56 dnsmasq[21208]: query[AAAA] app.teamepicrouter.test from 127.0.0
 Oct  3 19:17:56 dnsmasq[21208]: config app.teamepicrouter.test is NXDOMAIN
 Oct  3 19:17:56 dnsmasq[21208]: query[A] app.teamepicrouter.test from 127.0.0.1
 Oct  3 19:17:56 dnsmasq[21208]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:17:56 dnsmasq[21208]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:17:56 dnsmasq[21208]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:17:56 dnsmasq[21208]: query[A] api.teamepicrouter.test from 10.7.5.47
+Oct  3 19:17:56 dnsmasq[21208]: config api.teamepicrouter.test is 10.7.5.47
+Oct  3 19:36:12 dnsmasq[21208]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:36:12 dnsmasq[21208]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:36:12 dnsmasq[21208]: query[AAAA] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:36:12 dnsmasq[21208]: config app.teamepicrouter.test is NXDOMAIN
+Oct  3 19:37:40 dnsmasq[25427]: started, version 2.93 cachesize 150
+Oct  3 19:37:40 dnsmasq[25427]: using nameserver 1.1.1.1#53
+Oct  3 19:37:40 dnsmasq[25427]: using nameserver 8.8.8.8#53
+Oct  3 19:37:40 dnsmasq[25427]: using only locally-known addresses for teamepicrouter.test
+Oct  3 19:38:20 dnsmasq[25427]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:38:20 dnsmasq[25427]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:38:20 dnsmasq[25427]: query[A] api.teamepicrouter.test from 10.7.5.47
+Oct  3 19:38:20 dnsmasq[25427]: config api.teamepicrouter.test is 10.7.5.47
+Oct  3 19:38:20 dnsmasq[25427]: query[AAAA] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:38:20 dnsmasq[25427]: config app.teamepicrouter.test is NXDOMAIN
+Oct  3 19:38:20 dnsmasq[25427]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:38:20 dnsmasq[25427]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:38:23 dnsmasq[25427]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:38:23 dnsmasq[25427]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:38:23 dnsmasq[25427]: query[A] api.teamepicrouter.test from 10.7.5.47
+Oct  3 19:38:23 dnsmasq[25427]: config api.teamepicrouter.test is 10.7.5.47
+Oct  3 19:38:23 dnsmasq[25427]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:38:23 dnsmasq[25427]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:38:23 dnsmasq[25427]: query[A] api.teamepicrouter.test from 10.7.5.47
+Oct  3 19:38:23 dnsmasq[25427]: config api.teamepicrouter.test is 10.7.5.47
+Oct  3 19:44:52 dnsmasq[25427]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:44:52 dnsmasq[25427]: config app.teamepicrouter.test is 10.7.5.47
+Oct  3 19:44:52 dnsmasq[25427]: query[A] api.teamepicrouter.test from 10.7.5.47
+Oct  3 19:44:52 dnsmasq[25427]: config api.teamepicrouter.test is 10.7.5.47
+Oct  3 19:44:52 dnsmasq[25427]: query[AAAA] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:44:52 dnsmasq[25427]: config app.teamepicrouter.test is NXDOMAIN
+Oct  3 19:44:52 dnsmasq[25427]: query[A] app.teamepicrouter.test from 127.0.0.1
+Oct  3 19:44:52 dnsmasq[25427]: config app.teamepicrouter.test is 10.7.5.47

@@ -5,7 +5,14 @@ resolved by **our own DNS server**, the request reaches **our nginx edge** over 
 **round-robin** to one of **two backends**, with packet-level evidence for every step.
 Built on **two Macs with combined roles** (PDF "Type 2"). Everything is local; no cloud.
 
-Team: Abhijeet (Mac 1, infra) · Yashi (Mac 2, backends + client) · Nishant (architecture doc) · Prashant (repo + evidence)
+**Team Epic Router** · Computer Networks, Section D · Phase 1
+
+| Member | Enrollment no. | Role |
+|---|---|---|
+| Abhijeet &lt;Surname&gt; | 24XXXXXXXX | Mac 1: private DNS (dnsmasq) + nginx edge (reverse proxy, load balancer, TLS) |
+| Yashi Agrawal | 2401020078 | Mac 2: Backend A + Backend B, test client, packet capture |
+| Nishant &lt;Surname&gt; | 24XXXXXXXX | Architecture document |
+| Prashant &lt;Surname&gt; | 24XXXXXXXX | GitHub repo + evidence |
 
 | Mac | Owner | IP | Runs | Ports |
 |---|---|---|---|---|
@@ -49,7 +56,18 @@ mac1/check.sh                          # PASS/FAIL for tasks A–G
 Mac 1 deliberately does **not** use dnsmasq as its system-wide DNS: `/etc/resolver/teamepicrouter.test` sends only our
 domain to it, so Mac 1 keeps the internet if dnsmasq stops. (macOS `dig` ignores `/etc/resolver`; use `dig @127.0.0.1`.)
 
-**Mac 2:** follow [`mac2/README.md`](mac2/README.md): start both backends, then scripts 1 → 7.
+**Mac 2: run the backends** (Python 3 standard library only, nothing to install). Two Terminal windows, from the repo folder:
+```bash
+python3 backend/server.py A 3001     # window 1 -> Backend A
+python3 backend/server.py B 3002     # window 2 -> Backend B
+```
+Both listen on `0.0.0.0` (all interfaces), so nginx on Mac 1 can reach them. Click **Allow** if macOS asks about incoming
+connections. Quick check from any machine: `curl -i http://10.7.2.167:3001/api/status` → `X-Backend: A`
+(on a single computer: `curl -i http://127.0.0.1:3001/api/status`).
+Endpoints: `GET /` (cacheable: `Cache-Control: public, max-age=60` + `ETag`, answers `304` to `If-None-Match`),
+`GET /api/status` (`{"backend": "A", "status": "ok"}`, `Cache-Control: no-store`). Every response carries `X-Backend: A|B`.
+
+Then follow [`mac2/README.md`](mac2/README.md): scripts 1 → 7.
 
 **Stop:** Mac 1 `sudo pkill dnsmasq; nginx -s stop`. Mac 2 Ctrl+C both backends, `mac2/undo-dns.sh`.
 

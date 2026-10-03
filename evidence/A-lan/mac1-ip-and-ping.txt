@@ -1,4 +1,4 @@
-# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:17:53
+# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:44:48
 
 $ networksetup -listallhardwareports | grep -A2 'Wi-Fi'
 Hardware Port: Wi-Fi
@@ -21,12 +21,12 @@ $ ifconfig en0 | grep -E 'ether|inet '
 
 $ ping -c 4 10.7.2.167
 PING 10.7.2.167 (10.7.2.167): 56 data bytes
-64 bytes from 10.7.2.167: icmp_seq=0 ttl=64 time=9.973 ms
-64 bytes from 10.7.2.167: icmp_seq=1 ttl=64 time=7.818 ms
-64 bytes from 10.7.2.167: icmp_seq=2 ttl=64 time=30.433 ms
-64 bytes from 10.7.2.167: icmp_seq=3 ttl=64 time=74.059 ms
+64 bytes from 10.7.2.167: icmp_seq=0 ttl=64 time=11.068 ms
+64 bytes from 10.7.2.167: icmp_seq=1 ttl=64 time=10.921 ms
+64 bytes from 10.7.2.167: icmp_seq=2 ttl=64 time=10.853 ms
+64 bytes from 10.7.2.167: icmp_seq=3 ttl=64 time=9.872 ms
 
 --- 10.7.2.167 ping statistics ---
 4 packets transmitted, 4 packets received, 0.0% packet loss
-round-trip min/avg/max/stddev = 7.818/30.571/74.059/26.614 ms
+round-trip min/avg/max/stddev = 9.872/10.678/11.068/0.472 ms
 
