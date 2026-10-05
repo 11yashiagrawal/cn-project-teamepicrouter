@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Team backend. Same code runs as A or B (both on Mac 2, Yashi):
+"""Team backend. Same code runs as A or B (both on Mac 2):
    window 1:  python3 server.py A 3001
    window 2:  python3 server.py B 3002
 """

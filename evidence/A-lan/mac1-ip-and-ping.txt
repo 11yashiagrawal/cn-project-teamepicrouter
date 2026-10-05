@@ -1,4 +1,4 @@
-# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:44:48
+# Mac 1 (10.7.5.47) - 2026-10-03 19:44:48
 
 $ networksetup -listallhardwareports | grep -A2 'Wi-Fi'
 Hardware Port: Wi-Fi

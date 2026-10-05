@@ -1,5 +1,5 @@
 #!/bin/bash
-# Re-runs every Phase 1 check that can be done from Mac 1 (Abhijeet),
+# Re-runs every Phase 1 check that can be done from Mac 1,
 # saves the output into evidence/, and prints PASS/FAIL per task.
 #   mac1/check.sh          -> all tasks
 #   mac1/check.sh B E      -> only tasks B and E
@@ -13,7 +13,7 @@ TSHARK=/Applications/Wireshark.app/Contents/MacOS/tshark
 # Print "$ command" then its output, so every evidence file shows what was run.
 run() { echo "\$ $*"; eval "$*" 2>&1; echo; }
 result() { [ "$2" = 0 ] && echo "PASS  $1" || echo "FAIL  $1"; }
-stamp() { echo "# Mac 1 (Abhijeet, $MAC1) - $(date '+%Y-%m-%d %H:%M:%S')"; echo; }
+stamp() { echo "# Mac 1 ($MAC1) - $(date '+%Y-%m-%d %H:%M:%S')"; echo; }
 
 A() {
   f=evidence/A-lan/mac1-ip-and-ping.txt
@@ -102,7 +102,7 @@ F() {
 
 G() {
   pcap=evidence/G-wireshark/G-full-request.pcap
-  [ -f $pcap ] || { echo "SKIP  G  no $pcap yet (Yashi runs mac2/6-capture.sh)"; return; }
+  [ -f $pcap ] || { echo "SKIP  G  no $pcap yet (Mac 2 runs mac2/6-capture.sh)"; return; }
   ok=0
   # One tshark line per required item; HTTP on 3001/3002 decoded explicitly.
   t() { echo "## $1"; echo "\$ tshark -r $pcap -Y '$2' -T fields $3"

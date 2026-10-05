@@ -1,4 +1,4 @@
-# Mac 2 (Yashi) - 2026-10-03 18:39:38
+# Mac 2 - 2026-10-03 18:39:38
 
 $ /usr/bin/curl -sS https://10.7.5.47/api/status
 curl: (60) SSL: no alternative certificate subject name matches target ipv4 address '10.7.5.47'

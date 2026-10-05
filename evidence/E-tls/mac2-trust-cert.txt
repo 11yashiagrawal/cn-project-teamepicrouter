@@ -1,4 +1,4 @@
-# Mac 2 (Yashi) - 2026-10-03 18:36:13
+# Mac 2 - 2026-10-03 18:36:13
 
 $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain tls/app.teamepicrouter.test.crt
 

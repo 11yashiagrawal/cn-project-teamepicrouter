@@ -1,6 +1,6 @@
 # Section 6.3 failure demos: what we saw and what it proves
 
-Driven by `mac2/7-failures.sh` on Mac 2 (Yashi); Mac 1 steps in `docs/demo-runbook.md`. Each one was restored before the next.
+Driven by `mac2/7-failures.sh` on Mac 2; Mac 1 steps in `docs/demo-runbook.md`. Each one was restored before the next.
 
 | # | Break | What we observed | What it proves | Evidence |
 |---|---|---|---|---|

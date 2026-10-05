@@ -1,12 +1,12 @@
 #!/bin/bash
-# Tasks D, E, F on Mac 2 (Yashi): load balancing, TLS verification, HTTP versions, caching.
+# Tasks D, E, F on Mac 2: load balancing, TLS verification, HTTP versions, caching.
 # Run AFTER 3-use-team-dns.sh and 4-trust-cert.sh, with both backends running.
 cd "$(dirname "$0")/.." || exit 1
 MAC1=10.7.5.47
 APP=https://app.teamepicrouter.test
 CURL=/usr/bin/curl   # Apple's curl reads the macOS Keychain (Anaconda/Homebrew curl does not)
 run() { echo "\$ $*"; eval "$*" 2>&1; echo; }
-stamp() { echo "# Mac 2 (Yashi) - $(date '+%Y-%m-%d %H:%M:%S')"; echo; }
+stamp() { echo "# Mac 2 - $(date '+%Y-%m-%d %H:%M:%S')"; echo; }
 
 echo "=== D: six requests by name -> X-Backend should alternate A, B, A, B, A, B"
 { stamp

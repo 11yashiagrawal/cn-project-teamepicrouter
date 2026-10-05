@@ -1,4 +1,4 @@
-# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:44:52
+# Mac 1 (10.7.5.47) - 2026-10-03 19:44:52
 
 $ cat /etc/resolver/teamepicrouter.test
 nameserver 127.0.0.1

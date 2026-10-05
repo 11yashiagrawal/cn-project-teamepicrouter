@@ -7,11 +7,11 @@ Submission type: **Type 2: two Macs with combined roles.** Owner of this doc: Ni
 ```mermaid
 flowchart LR
   subgraph LAN["Campus Wi-Fi 10.7.0.0/19, gateway 10.7.0.1"]
-    subgraph M1["Mac 1 (Abhijeet) 10.7.5.47"]
+    subgraph M1["Mac 1 10.7.5.47"]
       DNS["dnsmasq<br/>UDP/TCP 53<br/>(Route 53)"]
       EDGE["nginx edge<br/>80 → 301, 443 TLS<br/>round-robin LB<br/>(ALB / CDN edge)"]
     end
-    subgraph M2["Mac 2 (Yashi) 10.7.2.167"]
+    subgraph M2["Mac 2 10.7.2.167"]
       CLIENT["Test client<br/>curl, Safari, tcpdump"]
       A["Backend A :3001<br/>(app instance A)"]
       B["Backend B :3002<br/>(app instance B)"]
@@ -27,10 +27,10 @@ Mac 1 is also a client (curl / browser on Mac 1 resolves through dnsmasq via `/e
 
 ## IP and service table
 
-| Machine | Owner | Interface | IPv4 / prefix | Mask | Gateway | MAC (in use on Wi-Fi) | Services | Ports |
-|---|---|---|---|---|---|---|---|---|
-| Mac 1 | Abhijeet | en0 (Wi-Fi) | 10.7.5.47/19 | 255.255.224.0 | 10.7.0.1 | 1a:19:57:39:0d:7b (private Wi-Fi address; hardware 80:a9:97:44:e7:17) | dnsmasq, nginx | 53/UDP+TCP, 80, 443 |
-| Mac 2 | Yashi | en0 (Wi-Fi) | 10.7.2.167/19 | 255.255.224.0 | 10.7.0.1 | ce:b1:41:a9:05:6a (private Wi-Fi address; hardware 10:9f:41:b9:4e:b2) | Backend A, Backend B, test client | 3001, 3002 |
+| Machine | Interface | IPv4 / prefix | Mask | Gateway | MAC (in use on Wi-Fi) | Services | Ports |
+|---|---|---|---|---|---|---|---|
+| Mac 1 | en0 (Wi-Fi) | 10.7.5.47/19 | 255.255.224.0 | 10.7.0.1 | 1a:19:57:39:0d:7b (private Wi-Fi address; hardware 80:a9:97:44:e7:17) | dnsmasq, nginx | 53/UDP+TCP, 80, 443 |
+| Mac 2 | en0 (Wi-Fi) | 10.7.2.167/19 | 255.255.224.0 | 10.7.0.1 | ce:b1:41:a9:05:6a (private Wi-Fi address; hardware 10:9f:41:b9:4e:b2) | Backend A, Backend B, test client | 3001, 3002 |
 
 DNS records (dnsmasq, TTL 30 s):
 

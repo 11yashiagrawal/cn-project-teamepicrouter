@@ -9,22 +9,21 @@ Built on **two Macs with combined roles** (PDF "Type 2"). Everything is local; n
 
 | Member | Enrollment no. | Role |
 |---|---|---|
-| Abhijeet &lt;Surname&gt; | 24XXXXXXXX | Mac 1: private DNS (dnsmasq) + nginx edge (reverse proxy, load balancer, TLS) |
+| Abhijeet | 2401010013 | Mac 1: private DNS (dnsmasq) + nginx edge (reverse proxy, load balancer, TLS) |
 | Yashi Agrawal | 2401020078 | Mac 2: Backend A + Backend B, test client, packet capture |
-| Nishant &lt;Surname&gt; | 24XXXXXXXX | Architecture document |
-| Prashant &lt;Surname&gt; | 24XXXXXXXX | GitHub repo + evidence |
+| Nishant Ranjan Singh | 2401010301 | Architecture document |
+| Prashant Pandey | 2401010339 | GitHub repo + evidence |
 
-| Mac | Owner | IP | Runs | Ports |
-|---|---|---|---|---|
-| Mac 1 | Abhijeet | 10.7.5.47 | dnsmasq (private DNS) + nginx (reverse proxy, round-robin LB, TLS termination) | 53, 80 → 443 |
-| Mac 2 | Yashi | 10.7.2.167 | Backend A + Backend B (`backend/server.py`), main test client, packet capture | 3001, 3002 |
+| Mac | IP | Runs | Ports |
+|---|---|---|---|
+| Mac 1 | 10.7.5.47 | dnsmasq (private DNS) + nginx (reverse proxy, round-robin LB, TLS termination) | 53, 80 → 443 |
+| Mac 2 | 10.7.2.167 | Backend A + Backend B (`backend/server.py`), main test client, packet capture | 3001, 3002 |
 
 `app.teamepicrouter.test` and `api.teamepicrouter.test` → **10.7.5.47** (Mac 1, where nginx runs).
 
 - Architecture, IP table, request flow per layer, cloud equivalents: [`docs/architecture.md`](docs/architecture.md)
 - Evidence for every PDF requirement: [`evidence/INDEX.md`](evidence/INDEX.md)
 - Demo steps (PDF Section 8) and troubleshooting: [`docs/demo-runbook.md`](docs/demo-runbook.md)
-- Viva answers: [`docs/viva-notes.md`](docs/viva-notes.md)
 
 ## Repo map
 
@@ -35,7 +34,7 @@ Built on **two Macs with combined roles** (PDF "Type 2"). Everything is local; n
 | `backend/server.py` | the backend (stdlib Python; same code runs as A or B) |
 | `tls/` | `openssl.cnf`, the **public** certificate, exact commands. The private key is never in git |
 | `mac1/` | `start-dnsmasq.sh`, `check.sh` (re-runs every check from Mac 1, saves evidence, prints PASS/FAIL) |
-| `mac2/` | Yashi's kit: numbered scripts + [`README`](mac2/README.md) |
+| `mac2/` | Mac 2 kit: numbered scripts + [`README`](mac2/README.md) |
 | `evidence/` | outputs, pcap, screenshots |
 
 ## Start everything

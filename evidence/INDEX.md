@@ -1,7 +1,7 @@
 # Evidence index: PDF requirement → file
 
-Every `.txt` shows the exact command (`$ …`) above its output. `mac1-*` = run on Mac 1 (Abhijeet, 10.7.5.47),
-`mac2-*` = run on Mac 2 (Yashi, 10.7.2.167). Regenerate Mac 1's files with `mac1/check.sh`.
+Every `.txt` shows the exact command (`$ …`) above its output. `mac1-*` = run on Mac 1 (10.7.5.47),
+`mac2-*` = run on Mac 2 (10.7.2.167). Regenerate Mac 1's files with `mac1/check.sh`.
 
 | PDF task | Requirement | Evidence |
 |---|---|---|

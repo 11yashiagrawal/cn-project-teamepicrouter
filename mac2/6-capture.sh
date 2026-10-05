@@ -1,5 +1,5 @@
 #!/bin/bash
-# Task G on Mac 2 (Yashi): capture ONE full request, DNS -> TCP -> TLS -> HTTP, into a .pcap.
+# Task G on Mac 2: capture ONE full request, DNS -> TCP -> TLS -> HTTP, into a .pcap.
 # Asks for your Mac password (sudo). Both backends must be running.
 cd "$(dirname "$0")/.." || exit 1
 MAC1=10.7.5.47

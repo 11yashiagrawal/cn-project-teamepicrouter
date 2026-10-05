@@ -1,16 +1,16 @@
-# Mac 2 kit (Yashi): Backends A + B, test client, packet capture
+# Mac 2 kit: Backends A + B, test client, packet capture
 
 Your Mac runs **both backends** (ports 3001 and 3002) and is the **main test client**.
-Mac 1 (Abhijeet, `10.7.5.47`) runs the DNS server (dnsmasq) and the edge (nginx).
+Mac 1 (`10.7.5.47`) runs the DNS server (dnsmasq) and the edge (nginx).
 
 Every script saves its output into `evidence/…` with the command printed above it.
-When you finish, send the whole `evidence/` folder back to Abhijeet.
+When you finish, send the whole `evidence/` folder back to Mac 1.
 
 > Scripts that say **sudo** will ask for *your Mac's login password*. Typing shows nothing; that's normal.
 
 ## 0. Setup (once)
 
-1. Get the project folder onto your Mac (GitHub clone or the AirDrop zip from Abhijeet).
+1. Get the project folder onto your Mac (GitHub clone or the AirDrop zip from Mac 1).
 2. Open **Terminal** and go into the folder, for example:
    ```bash
    cd ~/Downloads/cn-project-teamepicrouter
@@ -19,7 +19,7 @@ When you finish, send the whole `evidence/` folder back to Abhijeet.
    ```bash
    chmod +x mac2/*.sh
    ```
-4. Be on the **same Wi-Fi** as Abhijeet. Keep your Mac awake and plugged in during the session.
+4. Be on the **same Wi-Fi** as Mac 1. Keep your Mac awake and plugged in during the session.
 
 ## 1. LAN check (Task A)
 
@@ -27,7 +27,7 @@ When you finish, send the whole `evidence/` folder back to Abhijeet.
 mac2/1-ip-and-ping.sh
 ```
 **You should see:** your IP (`10.7.x.x`), mask `255.255.224.0`, gateway `10.7.0.1`, and `0.0% packet loss` to Mac 1.
-**If not:** check that both Macs are on the same Wi-Fi network, then tell Abhijeet. If it says *No route to host*,
+**If not:** check that both Macs are on the same Wi-Fi network, then tell Mac 1. If it says *No route to host*,
 go to System Settings → Privacy & Security → Local Network and turn **Terminal** on.
 
 ## 2. Start the two backends (Task C)
@@ -45,16 +45,16 @@ If it asks to install *Command Line Tools* for python3, click **Install** and wa
 **Leave both windows open** for the whole session. Every request shows up there as
 `[A] from 10.7.5.47 (real client 10.7.2.167) …`. **Take a screenshot of these log lines** (proof that requests come via nginx on Mac 1).
 
-Now tell Abhijeet "backends up". He checks them from Mac 1.
+Now tell Mac 1 "backends up" so it can check them.
 
 ## 3. Use the team DNS server (Task B), sudo
 
-Do this only after Abhijeet says dnsmasq is running.
+Do this only after Mac 1 says dnsmasq is running.
 ```bash
 mac2/3-use-team-dns.sh
 ```
 **You should see:** `nameserver[0] : 10.7.5.47`, and in the `dig` output `ANSWER SECTION … 10.7.5.47` and `SERVER: 10.7.5.47#53`.
-**If dig times out:** Abhijeet's dnsmasq isn't running, or his firewall blocks it.
+**If dig times out:** Mac 1's dnsmasq isn't running, or its firewall blocks it.
 **Note:** your Mac now uses Mac 1 for *all* DNS. If Mac 1 is off, websites won't load. Run `mac2/undo-dns.sh` to go back.
 
 ## 4. Trust our certificate (Task E), sudo
@@ -89,7 +89,7 @@ mac2/6-capture.sh
 
 ## 7. Failure demos (Section 6.3)
 
-Sit with Abhijeet for this one: it pauses whenever one of you must do something.
+Do this together with Mac 1: it pauses whenever one of you must do something.
 ```bash
 mac2/7-failures.sh
 ```
@@ -98,7 +98,7 @@ When it says *Ctrl+C*, press it in the **backend windows**, not in the window ru
 
 ## 8. Send the evidence back
 
-Send the whole `evidence/` folder to Abhijeet (AirDrop, or commit it if you have the GitHub repo).
+Send the whole `evidence/` folder to Mac 1 (AirDrop, or commit it if you have the GitHub repo).
 
 ## After the project
 

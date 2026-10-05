@@ -1,4 +1,4 @@
-# Mac 1 (Abhijeet, 10.7.5.47) - 2026-10-03 19:44:52
+# Mac 1 (10.7.5.47) - 2026-10-03 19:44:52
 
 $ /usr/bin/curl -sS https://10.7.5.47/api/status
 curl: (60) SSL: no alternative certificate subject name matches target ipv4 address '10.7.5.47'
