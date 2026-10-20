@@ -1,8 +1,0 @@
-# Failure 2 - Mac 2 - 2026-10-03 19:15:49
-
-$ dig +short app.teamepicrouter.test
-10.7.2.167
-
-$ /usr/bin/curl -sS https://app.teamepicrouter.test/api/status
-curl: (7) Failed to connect to app.teamepicrouter.test port 443 after 54 ms: Couldn't connect to server
-

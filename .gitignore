@@ -1,5 +1,0 @@
-*.key
-.DS_Store
-*.pdf
-# Raw dnsmasq log has every DNS lookup Mac 2 made (personal browsing); commit the filtered copy only
-evidence/B-dns/dnsmasq-log.txt
