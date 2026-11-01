@@ -1,0 +1,27 @@
+## A2 – dnsmasq configuration (node-1, /etc/dnsmasq.d/cn-team.conf)
+
+```
+ubuntu@node-1:~$ grep -vE '^[[:space:]]*(#|$)' /etc/dnsmasq.d/cn-team.conf
+interface=ens5
+listen-address=172.31.250.11
+bind-interfaces
+no-resolv
+no-hosts
+server=169.254.169.253
+domain-needed
+bogus-priv
+local=/teamepicrouter.test/
+local-ttl=30
+address=/app.teamepicrouter.test/172.31.250.12
+address=/api.teamepicrouter.test/172.31.250.12
+address=/node-1.teamepicrouter.test/172.31.250.11
+address=/node-2.teamepicrouter.test/172.31.250.12
+address=/node-3.teamepicrouter.test/172.31.250.13
+address=/node-4.teamepicrouter.test/172.31.250.14
+log-queries
+```
+
+`listen-address` is node-1's LAN IP (not 127.0.0.1), so every machine on the LAN can use it.
+`local-ttl=30` gives the answers a visible TTL of 30 s.
+
+## A3 – dig from a client machine (node-4 = Mac 4, not the DNS server)

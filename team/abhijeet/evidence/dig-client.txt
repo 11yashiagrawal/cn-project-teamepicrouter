@@ -1,0 +1,34 @@
+## A3 – dig from a client machine (node-4 = Mac 4, not the DNS server)
+
+```
+ubuntu@node-4:~$ cat /etc/resolv.conf
+# CN project: this machine uses the team DNS server(s) directly
+nameserver 172.31.250.11
+options timeout:2 attempts:2
+```
+
+```
+ubuntu@node-4:~$ dig app.teamepicrouter.test
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> app.teamepicrouter.test
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21678
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;app.teamepicrouter.test.			IN	A
+
+;; ANSWER SECTION:
+app.teamepicrouter.test.		30	IN	A	172.31.250.12
+
+;; Query time: 0 msec
+;; SERVER: 172.31.250.11#53(172.31.250.11) (UDP)
+;; WHEN: Sun Oct 04 19:04:43 UTC 2026
+;; MSG SIZE  rcvd: 59
+
+```
+
+## A4 – dig @8.8.8.8 (public DNS does not know the private name)
